@@ -1,0 +1,9 @@
+<h1>Editar post do blog</h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('blog/edit', [], true));
+echo $this->partial('blog/write/form', [
+    'form' => $form,
+    'submitLabel' => 'Atualizar post',
+]);
+

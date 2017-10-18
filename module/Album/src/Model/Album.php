@@ -11,7 +11,7 @@ use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 use Zend\Validator\StringLength;
 
-class Album
+class Album implements InputFilterAwareInterface
 
 {
     public $id;
@@ -24,6 +24,16 @@ class Album
         $this->artist   = !empty($data['artist']) ? $data['artist'] : null;
         $this->title       = !empty($data['title']) ? $data['title'] : null;
     }
+    
+    public function getArrayCopy()
+    {
+        return [
+            'id'     => $this->id,
+            'artist' => $this->artist,
+            'title'  => $this->title,
+        ];
+    }
+    
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
         throw new DomainException(sprintf(
@@ -31,7 +41,7 @@ class Album
             __CLASS__
         ));
     }
-
+    
     public function getInputFilter()
     {
         if ($this->inputFilter) {

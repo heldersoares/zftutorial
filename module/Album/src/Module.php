@@ -10,7 +10,7 @@ namespace Album;
 
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\ResultSet\ResultSet;
-use Zend\Db\Tablegateway\TableGateway;
+//use Zend\Db\Tablegateway\TableGateway;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
 /**

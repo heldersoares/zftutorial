@@ -47,7 +47,6 @@ class AlbumForm extends Form
                 'value' => 'Go',
                 'id' => 'submitbutton'
             ],
-            
         ]);
     }
 }

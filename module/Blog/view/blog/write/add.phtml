@@ -1,0 +1,9 @@
+<h1>Adicionar post no blog</h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url());
+echo $this->partial('blog/write/form', [
+    'form' => $form,
+    'submitLabel' => 'Inserir novo Post',
+]);
+
