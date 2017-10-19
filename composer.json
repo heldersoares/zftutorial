@@ -23,7 +23,8 @@
         "psr-4": {
             "Application\\": "module/Application/src/",
             "Blog\\": "module/Blog/src",
-            "Album\\": "module/Album/src"
+            "Album\\": "module/Album/src",
+            "Botoes\\" :"module/Botoes/src"
         }
     },
     "autoload-dev": {

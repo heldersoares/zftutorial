@@ -9,7 +9,7 @@
 namespace Blog\Model;
 
 use RuntimeException;
-use Zend\Db\Adapter\AdapterInterface;
+//use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Adapter\Driver\ResultInterface;
 use Zend\Db\Sql\Delete;
 use Zend\Db\Sql\Insert;
