@@ -9,6 +9,7 @@
 namespace Botoes\Form;
 
 use Zend\Form\Form;
+use Zend\Form\Element;
 
 /**
  * Description of PostForm
@@ -19,10 +20,14 @@ class PedidosForm extends Form {
     //put your code here
     public function init()
     {
-        $this->add([
-            'name' => 'Botao1',
-            'type' => 'button',
-        ]);
+        
+        $clicar =new Element('Clicar');
+        $clicar->setValue('Submeter');
+        $clicar->setAttributes(['type'=>'button']);
+        $this->add($clicar);
+        
+        
+        
         
     }
     
