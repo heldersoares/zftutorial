@@ -12,8 +12,23 @@
  */
 
 return [
-    'db'=>[
+/*    'db'=>[      
         'driver' => 'Pdo',
         'dsn' => sprintf('sqlite:%s/data/zftutorial.db', realpath(getcwd())),
+    ],
+];*/
+
+    'db' => [
+        'adapters' => [
+            'dbchinook' => [
+                'driver' => 'Pdo',
+                'dsn'    => 'sqlite:C:/sqlite/db/chinook.db',
+            ],
+            'tutorial' => [
+                'driver' => 'Pdo',
+                'dsn' => sprintf('sqlite:%s/data/zftutorial.db', realpath(getcwd())),
+            ],
+            
+        ],
     ],
 ];

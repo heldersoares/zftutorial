@@ -20,6 +20,7 @@ return [
         ],
     ],
     
+    
     'router'=>[
         'routes'=>[
             'blog'=>[
@@ -100,6 +101,7 @@ return [
             __DIR__.'/../view',
         ],
     ],
+    
     ];
 
 

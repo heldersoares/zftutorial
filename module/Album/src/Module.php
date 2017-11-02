@@ -10,7 +10,7 @@ namespace Album;
 
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\ResultSet\ResultSet;
-//use Zend\Db\Tablegateway\TableGateway;
+use Zend\Db\Tablegateway\TableGateway;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
 /**
@@ -37,10 +37,10 @@ class Module implements ConfigProviderInterface
                     return new Model\AlbumTable($tableGateway);
                 },
                 Model\AlbumTableGateway::class => function ($container) {
-                    $dbAdapter = $container->get(AdapterInterface::class);
+                    $dbAdapter = $container->get('tutorial');
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Album());
-                    return new \Zend\Db\TableGateway\TableGateway('album',$dbAdapter,null,$resultSetPrototype);
+                    return new TableGateway('album',$dbAdapter,null,$resultSetPrototype);
                 },        
             ],
         ];

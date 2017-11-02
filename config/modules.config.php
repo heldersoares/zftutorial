@@ -18,5 +18,6 @@ return [
     'Application',
     'Blog',
     'Album',
-    'Botoes'
+    'Botoes',
+    'Chinook'
 ];

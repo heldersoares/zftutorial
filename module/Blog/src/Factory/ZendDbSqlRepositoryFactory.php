@@ -21,7 +21,7 @@ class ZendDbSqlRepositoryFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         return new ZendDbSqlRepository(
-                $container->get(AdapterInterface::class),
+                $container->get('tutorial'), //no config global coloquei vários adapters e dei-lhes nomes diferentes
                 new ReflectionHydrator(),
                 new Post ('', '')
                 );
