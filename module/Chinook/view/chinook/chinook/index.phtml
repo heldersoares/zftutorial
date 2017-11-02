@@ -11,14 +11,15 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>LISTA DE ALBUMS DA BIBLIOTECA CHINOOK</div>
     </body>
 </html>
 
 <table class="table">
 <tr>
-    <th>Titulo</th>
+    <th>ID</th>
     <th>Artista</th>
+    <th>Título</th>
     <th>&nbsp;</th>
 </tr>
 
@@ -26,6 +27,7 @@ and open the template in the editor.
 <?php foreach ($albums as $album) : ?>
     <tr>
         <td><?= $this->escapeHtml($album->id) ?></td>
+        <td><?= $this->escapeHtml($album->artista) ?></td>
         <td><?= $this->escapeHtml($album->titulo) ?></td>
     </tr>
 <?php endforeach; ?>

@@ -26,8 +26,9 @@ class ChinookAlbum {
     
     public function exchangeArray(array $dados)
     {
+        //Nos dados tenho que colocar os campos como estão na tabela
         $this->id       = !empty($dados['AlbumId']) ? $dados['AlbumId']:null;
-        $this->artista  = !empty($dados['ArtistId']) ? $dados['ArtistId']:null;
+        $this->artista  = !empty($dados['Name']) ? $dados['Name']:null;
         $this->titulo   = !empty($dados['Title']) ? $dados['Title']:null;
     }
             
