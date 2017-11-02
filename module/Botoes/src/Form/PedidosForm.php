@@ -21,12 +21,15 @@ class PedidosForm extends Form {
     public function init()
     {
         
-        $clicar =new Element('Clicar');
-        $clicar->setValue('Submeter');
-        $clicar->setAttributes(['type'=>'button']);
-        $this->add($clicar);
+        $Item1 =new Element('Item1');
+        $Item1->setValue('Item1');
+        $Item1->setAttributes(['type'=>'button']);
+        $this->add($Item1);
         
-        
+        $Item2 =new Element('Item2');
+        $Item2->setValue('Item2');
+        $Item2->setAttributes(['type'=>'button']);
+        $this->add($Item2);
         
         
     }

@@ -3,6 +3,8 @@
 <?php
 $form = $this->form;
 $form->setAttribute('action', $this->url());
+$Botao1 = $form->get('Item1');
+$Botao1->setAttribute('class','btn btn-primary');
 $form->prepare();
 
 echo $this->form()->openTag($form);
