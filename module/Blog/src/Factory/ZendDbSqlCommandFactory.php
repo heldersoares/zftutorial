@@ -24,7 +24,8 @@ class ZendDbSqlCommandFactory implements FactoryInterface {
     
     public function __invoke(ContainerInterface $container, $requestName, array $options = null)
     {
-        return new ZendDbSqlCommand($container->get(AdapterInterface::class));
+       
+        return new ZendDbSqlCommand($container->get('tutorial'));
         
     }
     
