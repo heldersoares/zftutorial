@@ -20,6 +20,18 @@ return [
                         'action'        =>'index',    
                     ],
                 ],
+                'may_terminate'=> true,
+                'child_routes' => [
+                    'add' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route' => '/add',
+                            'defaults' => [
+                                'action' => 'add',
+                            ],
+                        ],
+                    ],
+                ]
             ],
         ],
     ],

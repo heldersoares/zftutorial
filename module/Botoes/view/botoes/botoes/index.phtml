@@ -9,12 +9,15 @@
 <body>
 <div class="container">
 
-<h1> Submit Button</h1>
+<h1> CARREGA NOS BOTÕES</h1>
  
-<div class='btn-group btn-group-lg'>
-    <input type="submit" class="btn btn-success" value="Submit Button-1 A">
-    <input type="submit" class="btn btn-success" value="Submit Button-1 B">
-    
+<div class="row">
+    <div class="col-lg-6">
+        <a class="btn btn-success btn-block btn-lg" value="Submit Button-1 A" href="<?= $this->url('botoes/add')?>"></a>
+    </div>
+    <div class="col-lg-6">
+        <input type="submit" class="btn btn-success btn-block btn-lg" value="Submit Button-1 B">
+    </div>
 </div>
 
 

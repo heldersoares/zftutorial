@@ -20,5 +20,10 @@ class BotoesController extends AbstractActionController
         return new ViewModel(['form' => $this->form]);
     }
     
+    public function addAction()
+    {
+        return $this->redirect()->toRoute('blog');
+    }
+    
             
 }

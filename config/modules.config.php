@@ -19,5 +19,6 @@ return [
     'Blog',
     'Album',
     'Botoes',
-    'Chinook'
+    'Chinook',
+    'ChinookCliente'
 ];
