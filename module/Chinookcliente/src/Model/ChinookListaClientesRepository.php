@@ -6,11 +6,10 @@
  * and open the template in the editor.
  */
 
-namespace Chinook\Model;
+namespace Chinookcliente\Model;
 
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
-use Chinook\Model\ChinookListaClientesInterface;
 
 /**
  * Description of ListaClientes

@@ -26,7 +26,7 @@
             "Album\\": "module/Album/src",
             "Botoes\\" :"module/Botoes/src",
             "Chinook\\":"module/Chinook/src",
-            "ChinookCliente\\":"module/ChinookCliente/src"
+            "Chinookcliente\\":"module/Chinookcliente/src"
         }
     },
     "autoload-dev": {

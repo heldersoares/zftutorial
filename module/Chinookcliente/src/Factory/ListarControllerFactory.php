@@ -8,10 +8,11 @@
 
 namespace Chinookcliente\Factory;
 
-use Zend\ServiceManager\Factory\FactoryInterface;
-use Interop\Container\ContainerInterface;
-use Chinookcliente\Model\ChinookListaClientesInterface;
 use Chinookcliente\Controller\ListarController;
+use Chinookcliente\Model\ChinookListaClientesInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+
 
 /**
  * Description of ListarClientesFactory
@@ -21,7 +22,7 @@ use Chinookcliente\Controller\ListarController;
 class ListarControllerFactory implements FactoryInterface {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return ListarController($container->get(ChinookListaClientesInterface::class));
+        return new ListarController($container->get(ChinookListaClientesInterface::class));
         //a fábrica tem de ser registada no module.config.php
     }
     
