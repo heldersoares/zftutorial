@@ -11,9 +11,10 @@ namespace Chinookcliente\Model;
 use Chinookcliente\Model\ChinookCliente;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
-
 use Zend\Hydrator\Reflection as ReflectionHydrator;
 use Zend\Db\ResultSet\HydratingResultSet;
+use Zend\Db\Adapter\Driver\ResultInterface;
+use Zend\Db\ResultSet\ResultSet;
 
 /**
  * Description of ListaClientes
@@ -38,17 +39,34 @@ class ChinookListaClientesRepository implements ChinookListaClientesInterface {
         
         $sql = new Sql($this->db);
         $selecao = $sql->select('customers');
+        //$selecao->columns(['FirstName','Country','CustomerId']);
         $stmt = $sql->prepareStatementForSqlObject($selecao);
         $resultado = $stmt->execute();
         
-        $resultadoSet = new HydratingResultSet(
-                new ReflectionHydrator(),
-                new Chinookcliente("",""));
-        $resultadoSet->initialize($resultado);        
-               
-        
-        return $resultadoSet;
-    }
+        /*
+        if ($resultado instanceof ResultInterface && $resultado->isQueryResult()) {
+        $resultSet = new ResultSet();
+        $resultSet->initialize($resultado);
+        var_export($resultSet);
+        die();
+        }
+
+        die('no data');
+        /*
+        */
+        if (! $resultado instanceof ResultInterface || ! $resultado->isQueryResult()) {
+        return [];
+        }
+
+        $resultSet = new HydratingResultSet(
+            new ReflectionHydrator(),
+            new ChinookCliente('','')
+        );
+    
+        $resultSet->initialize($resultado);
+        return $resultSet;
+         
+    }      
 
     public function findCliente($id) {
         
