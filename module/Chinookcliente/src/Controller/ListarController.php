@@ -30,6 +30,6 @@ class ListarController extends AbstractActionController {
 
     function indexAction()
     {
-        return new ViewModel();
+        return new ViewModel(['clientes'=> $this->ClientesRepository->findAllClientes()]);
     }
 }

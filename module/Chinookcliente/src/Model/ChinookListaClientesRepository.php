@@ -8,8 +8,12 @@
 
 namespace Chinookcliente\Model;
 
+use Chinookcliente\Model\ChinookCliente;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Sql;
+
+use Zend\Hydrator\Reflection as ReflectionHydrator;
+use Zend\Db\ResultSet\HydratingResultSet;
 
 /**
  * Description of ListaClientes
@@ -36,7 +40,14 @@ class ChinookListaClientesRepository implements ChinookListaClientesInterface {
         $selecao = $sql->select('customers');
         $stmt = $sql->prepareStatementForSqlObject($selecao);
         $resultado = $stmt->execute();
-        return $resultado;
+        
+        $resultadoSet = new HydratingResultSet(
+                new ReflectionHydrator(),
+                new Chinookcliente("",""));
+        $resultadoSet->initialize($resultado);        
+               
+        
+        return $resultadoSet;
     }
 
     public function findCliente($id) {
