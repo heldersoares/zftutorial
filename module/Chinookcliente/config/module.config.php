@@ -3,6 +3,7 @@
 namespace Chinookcliente;
 
 use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 
 return [
     
@@ -33,7 +34,21 @@ return [
                         'action' => 'index',
                     ],
                 ],
-
+                'may_terminate'=> true,
+                'child_routes'=>[
+                    'detail'=>[
+                        'type'=> Segment::class,
+                        'options' => [
+                            'route' => '/:id',
+                            'defaults' => [
+                                'action' => 'detail',
+                            ],
+                            'constrains' => [
+                                'id'=> '[1-9]\d*',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ],
     ],

@@ -7,7 +7,10 @@
  */
 
 namespace Chinookcliente\Factory;
+
+use Chinookcliente\Model\ChinookCliente;
 use Chinookcliente\Model\ChinookListaClientesRepository;
+use Zend\Hydrator\Reflection as ReflectionHydrator;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
@@ -20,7 +23,10 @@ class ChinookListaClientesRepositoryFactory implements FactoryInterface {
     
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        return new ChinookListaClientesRepository($container->get('dbchinook'));
+        return new ChinookListaClientesRepository(
+                $container->get('dbchinook'),
+                new ReflectionHydrator(),
+                new ChinookCliente('',''));
         //a fábrica tem de ser registada no module.config.php
     }
 

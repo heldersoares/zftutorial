@@ -11,7 +11,7 @@ namespace Chinookcliente\Controller;
 use Chinookcliente\Model\ChinookListaClientesInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-
+use InvalidArgumentException;
 /**
  * Description of ListarController
  *
@@ -31,5 +31,17 @@ class ListarController extends AbstractActionController {
     function indexAction()
     {
         return new ViewModel(['clientes'=> $this->ClientesRepository->findAllClientes()]);
+    }
+    
+    function detailAction()
+    {
+        $id = $this->params()->fromRoute('id');
+        
+        try {
+            $cliente = $this->ClientesRepository->findCliente($id);
+        } catch (\InvalidArgumentException $ex) {
+            return $this->redirect()->toRoute('clientes');
+        }
+        return new ViewModel(['cliente'=>$cliente]);
     }
 }
