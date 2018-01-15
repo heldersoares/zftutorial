@@ -39,7 +39,7 @@ class ListarController extends AbstractActionController {
         
         try {
             $cliente = $this->ClientesRepository->findCliente($id);
-        } catch (\InvalidArgumentException $ex) {
+        } catch (InvalidArgumentException $ex) {
             return $this->redirect()->toRoute('clientes');
         }
         return new ViewModel(['cliente'=>$cliente]);

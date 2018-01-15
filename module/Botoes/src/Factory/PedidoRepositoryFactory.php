@@ -15,15 +15,16 @@ namespace Botoes\Factory;
  */
 
 use Interop\Container\ContainerInterface;
+use Zend\Db\Adapter\AdapterInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
-use Botoes\Model\PedidoRepositoryInterface;
-use Botoes\Controller\BotoesController;
+use Botoes\Model\PedidoRepository;
+use Zend\Hydrator\Reflection as ReflectionHydrator;
+use Botoes\Model\Pedido;
 
-class BotoesControllerFactory implements FactoryInterface {
+class PedidoRepositoryFactory implements FactoryInterface {
     
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null){
-        
-        return new BotoesController($container->get(PedidoRepositoryInterface::class));
+        return new PedidoRepository($container->get('dbbotoes'),new ReflectionHydrator(), New Pedido('','','','',''));
     }
 
 }

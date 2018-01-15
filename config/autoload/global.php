@@ -28,6 +28,10 @@ return [
                 'driver' => 'Pdo',
                 'dsn' => sprintf('sqlite:%s/data/zftutorial.db', realpath(getcwd())),
             ],
+            'dbbotoes' => [
+                'driver' => 'Pdo',
+                'dsn' => 'sqlite:C:/sqlite/db/Botoes.db',
+            ]
             
         ],
     ],

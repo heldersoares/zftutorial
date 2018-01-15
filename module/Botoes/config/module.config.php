@@ -8,6 +8,21 @@ use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     
+    'service_manager' => [
+        'aliases' => [
+            Model\PedidoRepositoryInterface::class => Model\PedidoRepository::class,
+        ],
+        'factories' => [
+            Model\PedidoRepository::class => Factory\PedidoRepositoryFactory::class,
+            
+        ]
+    ],
+    
+    'controllers' => [
+        'factories' => [
+            Controller\BotoesController::class => Factory\BotoesControllerFactory::class ,
+        ]
+    ],
     
     'router'=>[
         'routes'=>[
@@ -20,32 +35,42 @@ return [
                         'action'        =>'index',    
                     ],
                 ],
-                'may_terminate'=> true,
+                'may_terminate' => true,
                 'child_routes' => [
+                    'detail' =>[
+                        'type' => Segment::class,
+                        'options' =>[
+                            'route' => '/:id',
+                            'defaults' => [
+                                'action' => 'detail',
+                             ],
+                            'constrains' => [
+                                'id' => '[1-9]\d*',
+                            ],
+                        ],
+                    ],
                     'add' => [
                         'type' => Literal::class,
-                        'options' => [
+                        'options' =>[
                             'route' => '/add',
                             'defaults' => [
+                                'controller' => Controller\WriteController::class,
                                 'action' => 'add',
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
+
         ],
     ],
-    'controllers' => [
-        'factories' => [
-            Controller\BotoesController::class => Factory\BotoesControllerFactory::class,
-            
-        ],
-    ],
+    
+
     'view_manager'=>[
         'template_path_stack' => [
             __DIR__.'/../view',
         ],
     ],
-    ];
+];
 
 

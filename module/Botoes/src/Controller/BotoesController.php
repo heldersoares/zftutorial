@@ -4,25 +4,33 @@ namespace Botoes\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Botoes\Form\PedidosForm;
+use Botoes\Model\PedidoRepositoryInterface;
 
 
 class BotoesController extends AbstractActionController
 {
-    private $form; //form a ser trnsmitido
-            
-    public function __construct(PedidosForm $form)
+   
+    //Array com valores de teste; a boa prática será colocar estes dados num Model
+    private $ListaTeste = ["Item 1", "Item 2"];  
+    private $repositorio;
+    
+    public function __construct(PedidoRepositoryInterface $pedidoRepository)
     {
-        $this->form = $form;
+       $this->repositorio = $pedidoRepository;
     }
     public function indexAction()
     {
-        return new ViewModel(['form' => $this->form]);
+        return new ViewModel(['pedidos'=>$this->repositorio->findAllPedidos()]);
     }
     
-    public function addAction()
+    public function detailAction()
     {
-        return $this->redirect()->toRoute('blog');
+        //Buscar id da route
+        $id = $this->params()->fromRoute('id');
+        
+        //colocar aqui hestão das exceções para reencaminhar utilizador logo pra sítio certo
+        
+        return new ViewModel(['pedido'=> $this->repositorio->findPedido($id)]);
     }
     
             

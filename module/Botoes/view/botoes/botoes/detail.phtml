@@ -8,7 +8,7 @@
 
 <body>
 <div class="container">
-    <h1> CARREGA NOS BOTÕES</h1>
+    <h1> CARREGA NOS BOTÕES DETAIL</h1>
     <div class="col-lg-6">
         <div class="row">
             <button type="button" class="btn btn-primary btn-lg ">Item 1</button>
@@ -23,12 +23,11 @@
         <?php
             echo "TABELA DE REGISTOS AQUI";
             echo "</br>";
-            foreach ($this->pedidos as $pedido) {
-                echo $pedido->getId();
-                echo "   ";
-                echo $pedido->getTextobotao();
-                echo "</br>";
-            }
+            echo $pedido->getId();
+            echo "   ";
+            echo $pedido->getTextobotao();
+            echo "</br>";
+          
         ?>
     </div>
     
