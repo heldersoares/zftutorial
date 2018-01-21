@@ -11,14 +11,18 @@ return [
     'service_manager' => [
         'aliases' => [
             Model\PedidoRepositoryInterface::class => Model\PedidoRepository::class,
+            Model\PedidoCommandInterface::class => Model\PedidoCommand::class,
         ],
         'factories' => [
             Model\PedidoRepository::class => Factory\PedidoRepositoryFactory::class,
+            Model\PedidoCommand::class => Factory\PedidoCommandFactory::class,
+            
         ]
     ],
     'controllers' => [
         'factories' => [
             Controller\BotoesController::class => Factory\BotoesControllerFactory::class ,
+            Controller\WriteController::class => Factory\WriteControllerFactory::class,
         ]
     ],
     'router'=>[
@@ -28,7 +32,7 @@ return [
                 'options'=>[
                     'route'=>'/botoes',
                     'defaults'=> [
-                        'controller'    =>Controller\BotoesController::class,
+                        'controller'    => Controller\BotoesController::class,
                         'action'        =>'index',    
                     ],
                 ],
@@ -39,6 +43,7 @@ return [
                         'options' =>[
                             'route'=>'/add',
                             'defaults' => [
+                                'controller' => Controller\WriteController::class,
                                 'action' => 'add',
                              ],
                            

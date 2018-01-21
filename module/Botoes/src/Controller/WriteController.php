@@ -8,7 +8,11 @@
 
 namespace Botoes\Controller;
 
+use Botoes\Model\Pedido;
+use Botoes\Model\PedidoCommandInterface;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
+
 
 /**
  * Description of WriteController
@@ -16,6 +20,26 @@ use Zend\Mvc\Controller\AbstractActionController;
  * @author Helder
  */
 class WriteController extends AbstractActionController {
+    
+    private $command; //do tipo PostCommandInterface
+    
+    
+    public function __construct(PedidoCommandInterface $command) {
+        $this->command = $command;
+    }
+    
+    public  function addAction() {
+        // depois hei-de introduzir como parâmetro o texto a ser incluído
+        //Por agora vou apenas executar o insertPost que vai ontroduzir uma linha
+        
+        $pedido= new Pedido('','Texto Add',date('c'),'',1);
+        
+        $pedido = $this->command->insertPedido($pedido);
+        
+        return $this->redirect()->toRoute('botoes');
+ 
+    }
+
     
     
     
