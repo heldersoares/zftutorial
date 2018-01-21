@@ -11,7 +11,6 @@ class BotoesController extends AbstractActionController
 {
    
     //Array com valores de teste; a boa prática será colocar estes dados num Model
-    private $ListaTeste = ["Item 1", "Item 2"];  
     private $repositorio;
     
     public function __construct(PedidoRepositoryInterface $pedidoRepository)
@@ -23,14 +22,10 @@ class BotoesController extends AbstractActionController
         return new ViewModel(['pedidos'=>$this->repositorio->findAllPedidos()]);
     }
     
-    public function detailAction()
+    public function addAction()
     {
-        //Buscar id da route
-        $id = $this->params()->fromRoute('id');
         
-        //colocar aqui hestão das exceções para reencaminhar utilizador logo pra sítio certo
-        
-        return new ViewModel(['pedido'=> $this->repositorio->findPedido($id)]);
+        return new ViewModel();
     }
     
             

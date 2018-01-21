@@ -86,7 +86,7 @@ class PedidoRepository implements PedidoRepositoryInterface {
         if (! $pedido) {
             throw new InvalidArgumentException(sprintf('Não foi encontrado pedido %s',$id));
         }
-        
+     
         return $pedido;
         
     }

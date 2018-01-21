@@ -14,16 +14,13 @@ return [
         ],
         'factories' => [
             Model\PedidoRepository::class => Factory\PedidoRepositoryFactory::class,
-            
         ]
     ],
-    
     'controllers' => [
         'factories' => [
             Controller\BotoesController::class => Factory\BotoesControllerFactory::class ,
         ]
     ],
-    
     'router'=>[
         'routes'=>[
             'botoes'=>[
@@ -37,40 +34,23 @@ return [
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
-                    'detail' =>[
+                    'adiciona' =>[
                         'type' => Segment::class,
                         'options' =>[
-                            'route' => '/:id',
+                            'route'=>'/add',
                             'defaults' => [
-                                'action' => 'detail',
-                             ],
-                            'constrains' => [
-                                'id' => '[1-9]\d*',
-                            ],
-                        ],
-                    ],
-                    'add' => [
-                        'type' => Literal::class,
-                        'options' =>[
-                            'route' => '/add',
-                            'defaults' => [
-                                'controller' => Controller\WriteController::class,
                                 'action' => 'add',
-                            ],
+                             ],
+                           
                         ],
                     ],
                 ],
             ],
-
         ],
     ],
-    
-
     'view_manager'=>[
         'template_path_stack' => [
             __DIR__.'/../view',
         ],
     ],
 ];
-
-

@@ -22,7 +22,7 @@ return [
         'adapters' => [
             'dbchinook' => [
                 'driver' => 'Pdo',
-                'dsn'    => 'sqlite:C:/sqlite/db/chinook.db',
+                'dsn'    => sprintf('sqlite:%s/data/chinook.db', realpath(getcwd())),
             ],
             'tutorial' => [
                 'driver' => 'Pdo',
@@ -30,7 +30,7 @@ return [
             ],
             'dbbotoes' => [
                 'driver' => 'Pdo',
-                'dsn' => 'sqlite:C:/sqlite/db/Botoes.db',
+                'dsn' => sprintf('sqlite:%s/data/botoes.db', realpath(getcwd())),
             ]
             
         ],
