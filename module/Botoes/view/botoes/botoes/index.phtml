@@ -20,16 +20,15 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <?php
-            echo "TABELA DE REGISTOS AQUI";
-            echo "</br>";
-            foreach ($this->pedidos as $pedido) {
-                echo $pedido->getId();
-                echo "   ";
-                echo $pedido->getTextobotao();
-                echo "</br>";
-            }
-        ?>
+        <h1>TABELA DE REGISTOS</h1>
+        <?php foreach($this->pedidos as $pedido): ?>
+        <tr>
+            <input type="checkbox" value="<?php $pedido->getId() ?>">
+            <p><?php echo $pedido->getTextoBotao() ?></p>
+        </tr>
+        <?php endforeach; ?>
+            
+       
     </div>
     
 </div>

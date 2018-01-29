@@ -41,9 +41,9 @@ class PedidoCommand implements PedidoCommandInterface     {
         $statement = $sql->prepareStatementForSqlObject($insert);
         $result = $statement->execute();
         
-        $id = $result->getGeneratedValue();
+        //$id = $result->getGeneratedValue();
         
-        return [];
+        return;
         /*
          *
         
