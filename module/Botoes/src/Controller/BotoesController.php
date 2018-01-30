@@ -28,5 +28,17 @@ class BotoesController extends AbstractActionController
         return new ViewModel();
     }
     
+    public function detailAction()
+    {
+         $id = $this->params()->fromRoute('id');
+        
+        try {
+            $pedido = $this->repositorio->findPedido($id);
+        } catch (\InvalidArgumentException $ex) {
+            return $this->redirect()->toRoute('botoes');
+        }
+        return new ViewModel(['pedido' => $pedido]);
+        
+    }
             
 }

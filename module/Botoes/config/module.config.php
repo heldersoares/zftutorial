@@ -49,6 +49,17 @@ return [
                            
                         ],
                     ],
+                    'detalhe' =>[
+                        'type' => Segment::class,
+                        'options' =>[
+                            'route'=>'/detail[/:id]',
+                            'defaults' => [
+                                'controller' => Controller\BotoesController::class,
+                                'action' => 'detail',
+                             ],
+                           
+                        ],
+                    ],
                 ],
             ],
         ],
