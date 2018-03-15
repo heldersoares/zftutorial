@@ -3,16 +3,43 @@
 <head>
 <meta charset="utf-8">
 <title>Formulário de botões</title>
-
+ 
 </head>
 
 <body>
-<div class="container">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <input type="date" name="DiaEscolhido">
+        <input type="submit">
+    </form>
+    <?php
+        $dia="01-01-1996";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $dia = test_input($_POST["DiaEscolhido"]);
+        }
+        
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripcslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+    ?>
+      
+    
+    <div class="container">
     <h1> CARREGA NOS BOTÕES</h1>
+    
     <div class="col-lg-6">
-        <div class="row">
+        <?php echo $dia;?>
+        <?php for ($i=1;$i<=4;$i++): ?>
+            <a type="button" class="btn btn-primary btn-lg" href="<?= $this->url('botoes/adiciona'); ?>"><?php echo sprintf('Botão %s',$i); ?> </a>
+        
+        <?php endfor; ?>
+            
+        }
+        <div class="btn-group btn-group-justified">
             <a type="button" class="btn btn-primary btn-lg" href="<?= $this->url('botoes/adiciona'); ?>">Item 1</a>
-            <a type="button" class="btn btn-primary btn-lg">Item 2</a>
+            <a type="button" class="btn btn-primary btn-lg" href="<?= $this->url('botoes/adiciona'); ?>">Item 2</a>
         </div>
         <div class="row">
             <button type="button" class="btn btn-primary btn-lg">Item 3</button>
@@ -20,6 +47,7 @@
         </div>
     </div>
     <div class="col-lg-6">
+        
         <h1>TABELA DE REGISTOS</h1>
         <?php foreach($this->pedidos as $pedido): ?>
             <tr>
