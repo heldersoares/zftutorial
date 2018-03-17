@@ -46,18 +46,8 @@
             <button type="button" class="btn btn-primary btn-lg">Item 4</button>
         </div>
     </div>
-    <div class="col-lg-6">
-        
-        <h1>TABELA DE REGISTOS</h1>
-        <?php foreach($this->pedidos as $pedido): ?>
-            <tr>
-                <input type="checkbox" value="<?php $pedido->getId() ?>">
-                <p><?php echo $pedido->getTextoBotao() ?></p>
-                <a class="btn btn-xs btn-default" href="<?= $this->url('botoes/detalhe',['id'=> $pedido->getId()]) ?>">Detalhe</a>
-            </tr>
-        <?php endforeach; ?>
-    </div>
     
+
 </div>
 
 </body>

@@ -40,5 +40,10 @@ class BotoesController extends AbstractActionController
         return new ViewModel(['pedido' => $pedido]);
         
     }
+    
+    public function parcialAction() {
+        
+        return new ViewModel(['pedidos'=>$this->repositorio->findAllPedidos()]);
+    }
             
 }

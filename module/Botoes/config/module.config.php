@@ -60,6 +60,17 @@ return [
                            
                         ],
                     ],
+                    'parcial' =>[
+                        'type' => Segment::class,
+                        'options' =>[
+                            'route'=>'/parcial[/:id]',
+                            'defaults' => [
+                                'controller' => Controller\BotoesController::class,
+                                'action' => 'parcial',
+                             ],
+                           
+                        ],
+                    ],
                 ],
             ],
         ],
