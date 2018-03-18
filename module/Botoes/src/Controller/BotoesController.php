@@ -19,7 +19,16 @@ class BotoesController extends AbstractActionController
     }
     public function indexAction()
     {
-        return new ViewModel(['pedidos'=>$this->repositorio->findAllPedidos()]);
+        
+        $view = new ViewModel();
+        $view->setTemplate('botoes/botoes/index'); //penso ser redundante
+        
+        $listaView = new viewModel();
+        $listaView->setTemplate('botoes/botoes/parcial');
+        
+        $view->addChild($listaView,'parcial');
+        
+        return $view;
     }
     
     public function addAction()

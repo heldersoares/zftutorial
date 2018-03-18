@@ -1,8 +1,0 @@
-<h1>Lista de clientes Chinook</h1>
-
-<?php foreach ($this->clientes as $cliente): ?>
-<article>
-    <h1 id="cliente<?= $cliente->getId() ?>"> <?= $cliente->getNome() ?></h1>
-    <p><?= $cliente->getPais() ?></p>
-</article>
-<?php endforeach; ?>
