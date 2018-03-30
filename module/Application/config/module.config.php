@@ -70,6 +70,18 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    'navigation' => [
+        'default' => [
+            [
+                'label' => 'Início',
+                'route' => 'home',
+            ],
+            [
+                'label' => 'Botões',
+                'route' => 'botoes',
+            ],
+        ],
+    ],
     'doctrine' => [
         'connection' => [
             'orm_default' => [

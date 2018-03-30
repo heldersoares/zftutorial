@@ -71,6 +71,17 @@ return [
                            
                         ],
                     ],
+                    'ajax' =>[
+                        'type' => Segment::class,
+                        'options' =>[
+                            'route'=>'/ajax[/:id]',
+                            'defaults' => [
+                                'controller' => Controller\BotoesController::class,
+                                'action' => 'ajax',
+                             ],
+                           
+                        ],
+                    ],
                 ],
             ],
         ],

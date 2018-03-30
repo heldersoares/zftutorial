@@ -31,6 +31,22 @@ class BotoesController extends AbstractActionController
         return $view;
     }
     
+    public function parcialAction() {
+        
+        $view= new ViewModel();
+        
+        
+        return $view;
+    } 
+    
+    public function ajaxAction() {
+        
+        $view= new ViewModel();
+        
+        
+        return $view;
+    } 
+    
     public function addAction()
     {
         
@@ -46,13 +62,8 @@ class BotoesController extends AbstractActionController
         } catch (\InvalidArgumentException $ex) {
             return $this->redirect()->toRoute('botoes');
         }
+        
         return new ViewModel(['pedido' => $pedido]);
         
     }
-    
-    public function parcialAction() {
-        
-        return new ViewModel(['pedidos'=>$this->repositorio->findAllPedidos()]);
-    }
-            
 }

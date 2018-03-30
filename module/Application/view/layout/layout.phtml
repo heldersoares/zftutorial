@@ -24,54 +24,17 @@
         ?>
     </head>
     <body>
+        
+        <div class="collapse navbar-collapse">
+            <?= $this->navigation('navigation')
+                ->menu()
+                ->setMinDepth(0)
+                ->setMaxDepth(0)
+                ->setUlClass('nav navbar-nav') ?>
+        </div>
         <div class="container">
-            <div class="row">
-                <!--Cabeçalho da página -->
-                <div class="col-md-4">
-                    <div class="app-caption">Olá Mundo</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Navegação-->
-                    <nav class='navbar navbar-default' role='navigation'>
-                        <div class='collapse navbar-collapse navbar-ex1-collapse'>
-                            <ul class='nav navbar-nav'>
-                                <li class='active'>
-                                    <a href='<?= $this->url('home')  ?>'>Home</a>
-                                </li>
-                                <li>
-                                    <a href='<?= $this->url('botoes') ?>'>Botoes</a>
-                                </li>
-                            </ul>
-                            
-                        </div>
-                    </nav>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Breadcrumbs -->
-                    <ol class="breadcrumb">
-                        <li class="ative">Home</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- placeholder de conteúdo --> 
-                    <?= $this->content; ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <hr>
-                    <p>&copy; 2018 - <?= date('Y') ?> by Helder Soares. All rights reserved. </p>
-                </div>
-            </div>
-        </div> <!-- container -->
-        <?php echo $this->inlineScript() ?>
-
-    </body>
-    
+            <?php // add the following line: ?>
+            <?= $this->navigation('navigation')->breadcrumbs()->setMinDepth(0) ?>
+            <?= $this->content ?>
+        </div>
 </html>

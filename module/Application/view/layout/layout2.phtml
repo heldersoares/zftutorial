@@ -1,0 +1,78 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('Olá Mundo')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+            ->prependStylesheet($this->basePath('css/style.css'))
+            ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+            ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+        ?>
+
+        <!-- Scripts -->
+        <?= $this->headScript()
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery-3.1.0.min.js'))
+        ?>
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="row">
+                <!--Cabeçalho da página -->
+                <div class="col-md-4">
+                    <div class="app-caption">Olá Mundo</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Navegação-->
+                    <nav class='navbar navbar-default' role='navigation'>
+                        <div class='collapse navbar-collapse navbar-ex1-collapse'>
+                            <ul class='nav navbar-nav'>
+                                <li class='active'>
+                                    <a href='<?= $this->url('home')  ?>'>Home</a>
+                                </li>
+                                <li>
+                                    <a href='<?= $this->url('botoes') ?>'>Botoes</a>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Breadcrumbs -->
+                    <ol class="breadcrumb">
+                        <li class="ative">Home</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- placeholder de conteúdo --> 
+                    <?= $this->content; ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <hr>
+                    <p>&copy; 2018 - <?= date('Y') ?> by Helder Soares. All rights reserved. </p>
+                </div>
+            </div>
+        </div> <!-- container -->
+        <?php echo $this->inlineScript() ?>
+
+    </body>
+    
+</html>
