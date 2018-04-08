@@ -4,7 +4,6 @@ namespace Botoes;
 
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     
@@ -41,7 +40,7 @@ return [
                     'adiciona' =>[
                         'type' => Segment::class,
                         'options' =>[
-                            'route'=>'/add',
+                            'route'=>'/add/:texto',
                             'defaults' => [
                                 'controller' => Controller\WriteController::class,
                                 'action' => 'add',
@@ -82,6 +81,18 @@ return [
                            
                         ],
                     ],
+                    'list' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route' => '/list',
+                            'defaults' => [
+                                'controller' => Controller\BotoesController::class,
+                                'action' => 'list', 
+       
+                            ],
+                        ],
+                        
+                    ]
                 ],
             ],
         ],

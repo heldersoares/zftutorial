@@ -12,10 +12,11 @@
             <h1> CARREGA NOS BOTÕES</h1>
             <div class="col-lg-6">
                 <div class="btn-group btn-group-justified">
-                    <a type="button" class="btn btn-primary btn-lg" href="<?= $this->url('botoes/adiciona'); ?>">Botão 1</a>
-                    <a type="button" class="btn btn-primary btn-lg" href="<?= $this->url('botoes/adiciona'); ?>">Botão 2</a>
+                    <a type="button" class="btn btn-primary btn-lg" href="<?= $this->url('botoes/adiciona',['texto' => 'Botão 1']); ?>">Botão 1</a>
+                    <a type="button" class="btn btn-primary btn-lg" href="<?= $this->url('botoes/adiciona',['texto' => 'Botão 2']); ?>">Botão 2</a>
                 </div>
             </div>
+            <?= $this->listagem ; ?>
         </div>
     </body>
 </html>

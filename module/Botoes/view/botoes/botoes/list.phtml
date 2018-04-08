@@ -1,0 +1,28 @@
+<?php
+
+    $title = "Eventos registados";
+    $this->headTitle($title);
+
+?>
+
+<h1><?= $this->escapeHtml($title) ?></h1>
+
+<table class="table">
+    <tr>
+        <th>Evento</th>
+        <th>Data</th>
+        <th>Hora</th>
+    </tr>
+    <?php foreach ($eventos as $evento):
+        $texto = $this->escapeHtml($evento->getTextobotao());
+        $datatempo = new DateTime($this->escapeHtml($evento->getEntrada()));
+        $data = $datatempo->format('d/m/Y');
+        $hora = $datatempo->format('H:i:s');
+        ?>
+    <tr>
+        <td><?= $this->escapeHtml($texto) ?></td>
+        <td><?= $this->escapeHtml($data) ?></td>
+        <td><?= $this->escapeHtml($hora) ?></td>
+    </tr>
+    <?php    endforeach; ?>
+</table>

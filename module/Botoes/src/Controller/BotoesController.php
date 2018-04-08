@@ -23,12 +23,21 @@ class BotoesController extends AbstractActionController
         $view = new ViewModel();
         $view->setTemplate('botoes/botoes/index'); //penso ser redundante
         
-        $listaView = new viewModel();
-        $listaView->setTemplate('botoes/botoes/parcial');
+        $listaView = new viewModel(['eventos' => $this->repositorio->findAllPedidos()]);
+        $listaView->setTemplate('botoes/botoes/list');
         
-        $view->addChild($listaView,'parcial');
+        
+        $view->addChild($listaView,'listagem');
         
         return $view;
+    }
+    
+    public function listAction() {
+        
+        $listview = new ViewModel(['eventos' => $this->repositorio->findAllPedidos()]);
+        
+        return $listview;
+        
     }
     
     public function parcialAction() {
@@ -64,6 +73,5 @@ class BotoesController extends AbstractActionController
         }
         
         return new ViewModel(['pedido' => $pedido]);
-        
     }
 }

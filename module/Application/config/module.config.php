@@ -80,6 +80,18 @@ return [
                 'label' => 'Botões',
                 'route' => 'botoes',
             ],
+            [
+                'label' => 'Album',
+                'route' => 'album',
+            ],
+            [
+                'label' => 'Blog',
+                'route' => 'blog',
+            ],
+            [
+                'label' => 'Chinook',
+                'route' => 'chinook',
+            ],
         ],
     ],
     'doctrine' => [

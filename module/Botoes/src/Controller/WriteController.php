@@ -29,9 +29,11 @@ class WriteController extends AbstractActionController {
     
     public  function addAction() {
         // depois hei-de introduzir como parâmetro o texto a ser incluído
-        //Por agora vou apenas executar o insertPost que vai ontroduzir uma linha
+        //Por agora vou apenas executar o insertPost que vai introduzir uma linha
         
-        $pedido= new Pedido('','Texto Add',date('c'),'',1);
+        $texto = $this->params('texto','Texto Default');
+        
+        $pedido= new Pedido('',$texto,date('c'),'',1);
         
         $pedido = $this->command->insertPedido($pedido);
         
