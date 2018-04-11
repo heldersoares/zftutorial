@@ -8,6 +8,8 @@
 
 namespace Botoes\Model;
 
+use DateTime;
+
 /**
  * Description of Pedido
  *

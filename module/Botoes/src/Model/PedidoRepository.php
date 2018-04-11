@@ -17,6 +17,7 @@ use Zend\Db\Sql\Sql;
 use Zend\Hydrator\HydratorInterface;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Adapter\Driver\ResultInterface;
+use DateTime;
 
 
 
@@ -84,10 +85,32 @@ class PedidoRepository implements PedidoRepositoryInterface {
         $pedido = $resultSet->current();
         
         if (! $pedido) {
-            throw new InvalidArgumentException(sprintf('Não foi encontrado pedido %s',$id));
+            throw new InvalidArgumentException(sprintf('( foi encontrado pedido %s',$id));
         }
      
         return $pedido;
+        
+    }
+    
+    public function findPedidoData($textodata) {
+        //ver questão de fuso horário
+        $datatempo= new datetime($textodata,'localtime');
+        $data = $datatempo->format('Y-m-d');
+        
+        $sql = new Sql($this->db);
+        $select = $sql->select('registo');
+        $select->where(['date(entrada)=?'=> $data]);
+        $stmt = $sql->prepareStatementForSqlObject($select);
+        $result = $stmt->execute();
+        
+        if (! $result instanceof ResultInterface || ! $result->isQueryResult()){
+            throw new RuntimeException(sprintf('Falha na consulta do item %s',$data));
+        }
+        
+        $resultSet = new HydratingResultSet($this->hydrator, $this->pedidoPrototype);
+        $resultSet->initialize($result);
+        
+        return $resultSet;
         
     }
 

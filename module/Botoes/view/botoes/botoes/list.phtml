@@ -15,9 +15,11 @@
     </tr>
     <?php foreach ($eventos as $evento):
         $texto = $this->escapeHtml($evento->getTextobotao());
+        
         $datatempo = new DateTime($this->escapeHtml($evento->getEntrada()));
         $data = $datatempo->format('d/m/Y');
         $hora = $datatempo->format('H:i:s');
+        
         ?>
     <tr>
         <td><?= $this->escapeHtml($texto) ?></td>

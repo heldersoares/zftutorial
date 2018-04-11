@@ -18,4 +18,6 @@ interface PedidoRepositoryInterface {
     
     public function findPedido($id);
     
+    public function findPedidoData($textodata);
+    
 }

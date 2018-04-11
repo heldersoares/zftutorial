@@ -82,9 +82,9 @@ return [
                         ],
                     ],
                     'list' => [
-                        'type' => Literal::class,
+                        'type' => Segment::class,
                         'options' => [
-                            'route' => '/list',
+                            'route' => '/list[/:data]',
                             'defaults' => [
                                 'controller' => Controller\BotoesController::class,
                                 'action' => 'list', 
