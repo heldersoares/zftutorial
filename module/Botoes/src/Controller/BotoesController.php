@@ -31,14 +31,11 @@ class BotoesController extends AbstractActionController
    
     public function listAction() {
         
-        $textodata = $this->params('data');
-        $listview = new ViewModel(['eventos' => $this->repositorio->findPedidoData($textodata)]);
-        
+        $lista= $this->repositorio->findAllPedidos();
+        $listview = new ViewModel(['eventos' => $lista]);
         return $listview;
         
     }
-    
-    
     
     public function parcialAction() {
         
@@ -50,7 +47,8 @@ class BotoesController extends AbstractActionController
     
     public function ajaxAction() {
         
-        $view= new ViewModel();
+        
+        $view = new ViewModel();
         
         
         return $view;
