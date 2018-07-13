@@ -44,6 +44,7 @@ class PedidoRepository implements PedidoRepositoryInterface {
         $sql = new Sql($this->db);
         $select = $sql->select();
         $select->from('registo');
+        //$select->where->between('entrada','2018-04-10','2018-04-15'); //para testes
         $stmt = $sql->prepareStatementForSqlObject($select);
         $result = $stmt->execute();
         
@@ -61,10 +62,8 @@ class PedidoRepository implements PedidoRepositoryInterface {
         if (! $result instanceof ResultInterface || ! $result->isQueryResult()){
             return [];
         }
-        
         $resultSet = new HydratingResultSet($this->hydrator, $this->pedidoPrototype);
         $resultSet->initialize($result);
-        
         return $resultSet;
     }
 
@@ -92,14 +91,14 @@ class PedidoRepository implements PedidoRepositoryInterface {
         
     }
     
-    public function findPedidoData($textodata) {
-        //ver questão de fuso horário
-        $datatempo= new datetime($textodata,'localtime');
-        $data = $datatempo->format('Y-m-d');
+    public function findPedidoData($datainicio,$datafim) {
+        
+        //verificação se datainicio é menor que datafim é feito no script de entrada
+        
         
         $sql = new Sql($this->db);
         $select = $sql->select('registo');
-        $select->where(['date(entrada)=?'=> $data]);
+        //$select->where->between('id', , $maxValue));
         $stmt = $sql->prepareStatementForSqlObject($select);
         $result = $stmt->execute();
         

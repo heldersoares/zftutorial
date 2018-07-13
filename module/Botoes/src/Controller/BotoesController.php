@@ -2,10 +2,11 @@
 
 namespace Botoes\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 use Botoes\Model\PedidoRepositoryInterface;
-
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\JsonModel;
+use Zend\View\Model\ViewModel;
+use Zend\Http\Request;
 
 class BotoesController extends AbstractActionController
 {
@@ -19,10 +20,11 @@ class BotoesController extends AbstractActionController
     }
     public function indexAction()
     {
-        
+        //Buscar dados ao repositório
+        $dados = $this->repositorio->findAllPedidos();
         $view = new ViewModel();
         $view->setTemplate('botoes/botoes/index'); //penso ser redundante
-        $listaView = new viewModel(['eventos' => $this->repositorio->findAllPedidos()]);
+        $listaView = new viewModel(['eventos' =>$dados]);
         $listaView->setTemplate('botoes/botoes/list');
         $view->addChild($listaView,'listagem');
 
@@ -34,29 +36,39 @@ class BotoesController extends AbstractActionController
         $lista= $this->repositorio->findAllPedidos();
         $listview = new ViewModel(['eventos' => $lista]);
         return $listview;
-        
     }
     
     public function parcialAction() {
         
         $view= new ViewModel();
-        
-        
         return $view;
     } 
     
     public function ajaxAction() {
+ 
+        //array de teste
+        $linha = array('id'=>'Estado de sitio');
+        //$jsonData = \Zend\Json\Json::encode($linha);
+        //echo \Zend\Json\Json::prettyPrint($jsonData);
         
+        $request= $this->getRequest();
         
-        $view = new ViewModel();
-        
-        
+        $query = $request->getQuery();
+       
+                
+        if ($request->isXmlHttpRequest() || $query->get('showJson')== 1){
+            
+            $view = new JsonModel($linha);
+            $view->setTerminal(true);
+        }
+        else {
+            $view= new ViewModel();
+        }
         return $view;
     } 
     
     public function addAction()
-    {
-        
+    {        
         return new ViewModel();
     }
     

@@ -18,6 +18,6 @@ interface PedidoRepositoryInterface {
     
     public function findPedido($id);
     
-    public function findPedidoData($textodata);
-    
+    public function findPedidoData($datainicio, $datafim);
+    //permite filtrar entrada de eventos com base em duas datas (podem ser as mesmas para um só dia)
 }

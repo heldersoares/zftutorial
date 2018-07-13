@@ -7,7 +7,7 @@
                 });
                 $("#ajax").click(function(){
                     $.ajax({
-                        url:        '../botoes/ajax',
+                        url:        '/botoes/ajax/',
                         method:      'POST',
                         dataType:   'json',
                         type:       'async',
@@ -15,7 +15,7 @@
                         
                         success: function(data) {
                             alert('Pedido OK');
-                            $("#p1").text(data[id]);
+                            $("#p1").text(data);
                         },
                         error: function(xhr, textStatus, errorThrown){
                             $("#p1").text(xhr+ " "+ errorThrown + " " + textStatus);
