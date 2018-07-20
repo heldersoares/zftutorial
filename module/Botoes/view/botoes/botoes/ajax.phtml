@@ -15,7 +15,7 @@
                         
                         success: function(data) {
                             alert('Pedido OK');
-                            $("#p1").text(data[id]);
+                            $("#p1").text(data['id']);
                         },
                         error: function(xhr, textStatus, errorThrown){
                             $("#p1").text(xhr+ " "+ errorThrown + " " + textStatus);

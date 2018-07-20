@@ -32,11 +32,9 @@ class WriteController extends AbstractActionController {
         //Por agora vou apenas executar o insertPost que vai introduzir uma linha
         
         $texto = $this->params('texto','Texto Default');
-        
         $pedido= new Pedido('',$texto,date('c'),'',1);
-        
         $pedido = $this->command->insertPedido($pedido);
-        
+    
         return $this->redirect()->toRoute('botoes');
  
     }

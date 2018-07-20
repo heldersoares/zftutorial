@@ -15,9 +15,31 @@
                     </div>
                 </div>    
             </div>
+            <br>
             <div class="row">
-                <?= $this->listagem ?>
-            </div>
+                <div class="container">
+                    <div id="eventos-table">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Evento</th>
+                                <th>Data</th>
+                                <th>Hora</th>
+                            </tr>
+                            <?php foreach ($eventos as $evento):
+                                $texto = $this->escapeHtml($evento->getTextobotao());
+                                $datatempo = new DateTime($this->escapeHtml($evento->getEntrada()));
+                                $data = $datatempo->format('d/m/Y');
+                                $hora = $datatempo->format('H:i:s');
+                                ?>
+                                <tr>
+                                    <td><?= $this->escapeHtml($texto) ?></td>
+                                    <td><?= $this->escapeHtml($data) ?></td>
+                                    <td><?= $this->escapeHtml($hora) ?></td>
+                                </tr>
+                            <?php    endforeach; ?>
+                        </table>
+                    </div>   
+                </div>
             <br/>
         </body>
 </html>

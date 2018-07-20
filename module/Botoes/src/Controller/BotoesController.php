@@ -6,7 +6,6 @@ use Botoes\Model\PedidoRepositoryInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
 use Zend\View\Model\ViewModel;
-use Zend\Http\Request;
 
 class BotoesController extends AbstractActionController
 {
@@ -22,12 +21,7 @@ class BotoesController extends AbstractActionController
     {
         //Buscar dados ao repositório
         $dados = $this->repositorio->findAllPedidos();
-        $view = new ViewModel();
-        $view->setTemplate('botoes/botoes/index'); //penso ser redundante
-        $listaView = new viewModel(['eventos' =>$dados]);
-        $listaView->setTemplate('botoes/botoes/list');
-        $view->addChild($listaView,'listagem');
-
+        $view = new ViewModel(['eventos'=> $dados]);
         return $view;
     }
    
@@ -48,18 +42,14 @@ class BotoesController extends AbstractActionController
  
         //array de teste
         $linha = array('id'=>'Estado de sitio');
-        //$jsonData = \Zend\Json\Json::encode($linha);
-        //echo \Zend\Json\Json::prettyPrint($jsonData);
         
         $request= $this->getRequest();
-        
         $query = $request->getQuery();
-       
                 
         if ($request->isXmlHttpRequest() || $query->get('showJson')== 1){
             
             $view = new JsonModel($linha);
-            $view->setTerminal(true);
+            //$view->setTerminal(true);
         }
         else {
             $view= new ViewModel();

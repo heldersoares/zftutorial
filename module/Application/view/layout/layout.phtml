@@ -35,19 +35,14 @@
             <div class="row">
                 <div class="col-md-12">
                     <!-- Navegação-->
-                    <nav class='navbar navbar-default' role='navigation'>
-                        <div class='collapse navbar-collapse navbar-ex1-collapse'>
-                            <ul class='nav navbar-nav'>
-                                <li class='active'>
-                                    <a href='<?= $this->url('home')  ?>'>Home</a>
-                                </li>
-                                <li>
-                                    <a href='<?= $this->url('botoes') ?>'>Botoes</a>
-                                </li>
-                            </ul>
+                    <div class='collapse navbar-collapse'>
+                            <?= $this->navigation('navigation')
+                                ->menu()
+                                ->setMinDepth(0)
+                                ->setMaxDepth(0)
+                                ->setUlClass('nav navbar-nav') ?>
                             
-                        </div>
-                    </nav>
+                      
                 </div>
             </div>
             <div class="row">

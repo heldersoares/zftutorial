@@ -83,6 +83,23 @@ return [
             [
                 'label' => 'Album',
                 'route' => 'album',
+                'pages' => [
+                    [
+                        'label' => 'Add',
+                        'route' => 'album',
+                        'action' => 'add',
+                    ],
+                    [
+                        'label'  => 'Edit',
+                        'route'  => 'album',
+                        'action' => 'edit',
+                    ],
+                    [
+                        'label'  => 'Delete',
+                        'route'  => 'album',
+                        'action' => 'delete',
+                    ],
+                ],
             ],
             [
                 'label' => 'Blog',
@@ -93,18 +110,5 @@ return [
                 'route' => 'chinook',
             ],
         ],
-    ],
-    'doctrine' => [
-        'connection' => [
-            'orm_default' => [
-                'driverClass' => PDOMySqlDriver::class,
-                'params' => [
-                    'host'     => '127.0.0.1',                    
-                    'user'     => 'root',
-                    'password' => '',
-                    'dbname'   => 'zftutorial',
-                ]
-            ],            
-        ],        
     ],
 ];
