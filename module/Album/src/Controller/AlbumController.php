@@ -55,8 +55,7 @@ class AlbumController extends AbstractActionController
         if (0===$id){
             return $this->redirect()->toRoute('album',['action'=>'add']);
         }
-        
-              // Retrieve the album with the specified id. Doing so raises
+        // Retrieve the album with the specified id. Doing so raises
         // an exception if the album is not found, which should result
         // in redirecting to the landing page.
         try {
@@ -82,13 +81,11 @@ class AlbumController extends AbstractActionController
         if (! $form->isValid()) {
             return $viewData;
         }
-
         $this->table->saveAlbum($album);
 
         // Redirect to album list
         return $this->redirect()->toRoute('album', ['action' => 'index']);
     } 
-        
     
     public function deleteAction()
     {

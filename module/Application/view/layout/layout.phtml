@@ -24,7 +24,6 @@
         ?>
     </head>
     <body>
-        
         <div class="container">
             <div class="row">
                 <!--Cabeçalho da página -->
@@ -32,30 +31,23 @@
                     <div class="app-caption">Olá Mundo</div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Navegação-->
-                    <div class='collapse navbar-collapse'>
-                            <?= $this->navigation('navigation')
-                                ->menu()
-                                ->setMinDepth(0)
-                                ->setMaxDepth(0)
-                                ->setUlClass('nav navbar-nav') ?>
-                            
-                      
-                </div>
+            <br />
+            <div class="collapse navbar-collapse">
+                <?= $this->navigation('navigation')
+                    ->menu()
+                    ->setMinDepth(0)
+                    ->setMaxDepth(1)
+                    ->setUlClass('nav navbar-nav')
+                ?>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Breadcrumbs -->
-                    <ol class="breadcrumb">
-                        <li class="ative">Home</li>
-                    </ol>
-                </div>
-            </div>
+            
             <div class="row">
                 <div class="col-md-12">
                     <!-- placeholder de conteúdo --> 
+                    <?= $this->navigation('navigation')
+                        ->breadcrumbs()
+                        ->setMinDepth(0)
+                        ->setPartial('partial/breadcrumb') ?>
                     <?= $this->content; ?>
                 </div>
             </div>

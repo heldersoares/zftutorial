@@ -79,6 +79,13 @@ return [
             [
                 'label' => 'Botões',
                 'route' => 'botoes',
+                'pages' => [
+                    [
+                        'label' => 'Adiciona',
+                        'route' => 'adiciona',
+                        'action' => 'add',
+                    ],
+                ],
             ],
             [
                 'label' => 'Album',
@@ -104,6 +111,15 @@ return [
             [
                 'label' => 'Blog',
                 'route' => 'blog',
+                'pages' => [
+                    [
+                        'label' => 'Edita',
+                        'route' => 'detail',
+                        'action' => 'detail',
+
+                    ],
+                ],
+                
             ],
             [
                 'label' => 'Chinook',
