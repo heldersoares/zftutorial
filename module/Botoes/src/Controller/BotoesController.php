@@ -42,12 +42,24 @@ class BotoesController extends AbstractActionController
     public function ajaxAction() {
  
         //array de teste
-        $eventos=$this->repositorio->findAllPedidos();
+        
         $request= $this->getRequest();
         $query = $request->getQuery();
-                
+        if(isset($_POST["from_date"], $_POST["to_date"])){
+            $datainicial=$_POST["from_date"];
+            $datafinal=$_POST["to_date"];
+            $eventos=$this->repositorio->findPedidoData($datainicial,$datafinal);
+        };
+        
+        
+        //Naõ colocar a próxima linha dentro do if
+        
+                       
         if ($request->isXmlHttpRequest() || $query->get('showJson')== 1){
+
             //passar de objeto para array de eventos
+            
+            
             $jsonData=[];
             $idx =0;
             foreach ($eventos as $evento){
@@ -62,6 +74,7 @@ class BotoesController extends AbstractActionController
             //$view->setTerminal(true);
         }
         else {
+            
             $view= new ViewModel();
         }
         return $view;

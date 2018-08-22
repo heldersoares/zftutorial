@@ -97,8 +97,9 @@ class PedidoRepository implements PedidoRepositoryInterface {
         
         
         $sql = new Sql($this->db);
-        $select = $sql->select('registo');
-        //$select->where->between('id', , $maxValue));
+        $select = $sql->select();
+        $select->from('registo');
+        $select->where->between('entrada',$datainicio,$datafim);
         $stmt = $sql->prepareStatementForSqlObject($select);
         $result = $stmt->execute();
         
