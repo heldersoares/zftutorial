@@ -1,36 +1,95 @@
 <html>
     <head>
+        
+        <!--//atenção à ordem.. estamos a fazer pré-adições (prepend)-->
+        <?= $this->headScript()
+            ->prependFile($this->basePath('jquery-ui/jquery-ui.min.js'))
+            ->prependFile($this->basePath('jquery-ui/external/jquery/jquery.js'))
+        ?>
+        <?= $this->headLink()
+            ->prependStylesheet($this->basePath('jquery-ui/jquery-ui.min.css'))
+        ?>
         <script>
             $(document).ready(function(){
-                $("p").click(function(){
-                    $("#p1").text("Clicaste no texto, meu");
+                $.datepicker.setDefaults({  
+                    dateFormat: 'yy-mm-dd'   
+                });  
+                $(function(){  
+                    $("#from_date").datepicker();  
+                    $("#to_date").datepicker();  
                 });
-                $("#ajax").click(function(){
-                    $.ajax({
-                        url:        '../botoes/ajax',
-                        method:      'POST',
-                        dataType:   'json',
-                        type:       'async',
-                        
-                        
-                        success: function(data) {
-                            alert('Pedido OK');
-                            $("#p1").text(data['id']);
-                        },
-                        error: function(xhr, textStatus, errorThrown){
-                            $("#p1").text(xhr+ " "+ errorThrown + " " + textStatus);
-                            alert('O pedido AJAX falhou');
-                        },
-                    });
-            
-                });
+                $('#filter').click(function(){  
+                    var from_date = $('#from_date').val();  
+                    var to_date = $('#to_date').val();  
+                    if(from_date != '' && to_date != '')  
+                    {
+                        alert('Filtro validado!');
+                        $.ajax({
+                            url:        '../botoes/ajax',
+                            method:      'POST',
+                            data:   {from_date:from_date, to_date:to_date},
+                            dataType:   'json',
+                            type:       'async',
+                            success: function(data,status) {
+                                //alert('Pedido OK');
+                                $("#p1").text("O número de pedidos é " + data.length);
+                                var e = $('<tr><th>Evento</th><th>Data</th><th>Hora</th></tr>');
+                                $('#evento').html(' ');
+                                $('#evento').append(e);
+                                for(i=0; i<data.length; i++){
+                                    evento=data[i];
+                                    var e=$('<tr><td id="texto"></td><td id="data"></td><td id="hora"></td><tr>');
+                                    //próximo é um método jQuery. A forma do delector diz que escolhemos o #texto no elemento e (que é a variável criada anteriormente)
+                                    $("#texto",e).html(evento['Texto']);
+                                    $("#data",e).html(evento['Data']);
+                                    $("#hora",e).html(evento['Hora']);
+                                    $("#evento").append(e);
+                                }
+                            },           
+                            error: function(xhr, textStatus, errorThrown){
+                                $("#p1").text(xhr+ " "+ errorThrown + " " + textStatus);
+                                alert('O pedido AJAX falhou');
+                            },
+                        });
+                    }  
+                    else  
+                    {  
+                        alert("Selecionar data");  
+                    }  
+                });  
+                
             });
         </script>
+       
     </head>
     <body>
         <h1>Página AJAX</h1>
+        <br>
+        <div class="col-md-3">  
+            <input type="text" name="from_date" id="from_date" class="form-control" placeholder="Data inicial" />  
+        </div>
+        <div class="col-md-3">  
+            <input type="text" name="to_date" id="to_date" class="form-control" placeholder="Data final" />  
+        </div>
+        <div class="col-md-5">  
+            <input type="button" name="filter" id="filter" value="Filtrar" class="btn btn-info" />  
+        </div>  
+        <div style="clear:both"></div>                 
+        <br /> 
         <a id="ajax">Carrega AJAX</a>
         <p id="p1">Texto porreiro</p>
+        <table class="table table-bordered">
+            <tbody id="evento">
+                
+            </tbody>
+            
+        </table>
     </body>
+    
 </html>
+
+<script>
+
+
+</script>
 

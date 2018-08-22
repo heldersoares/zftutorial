@@ -79,12 +79,7 @@ return [
             [
                 'label' => 'Botões',
                 'route' => 'botoes',
-                'pages' => [
-                    [
-                        'label' => 'Adiciona',
-                        'route' => 'adiciona',
-                        'action' => 'add',
-                    ],
+                
                 ],
             ],
             [

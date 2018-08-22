@@ -6,6 +6,7 @@ use Botoes\Model\PedidoRepositoryInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
 use Zend\View\Model\ViewModel;
+use DateTime;
 
 class BotoesController extends AbstractActionController
 {
@@ -41,14 +42,23 @@ class BotoesController extends AbstractActionController
     public function ajaxAction() {
  
         //array de teste
-        $linha = array('id'=>'Estado de sitio');
-        
+        $eventos=$this->repositorio->findAllPedidos();
         $request= $this->getRequest();
         $query = $request->getQuery();
                 
         if ($request->isXmlHttpRequest() || $query->get('showJson')== 1){
-            
-            $view = new JsonModel($linha);
+            //passar de objeto para array de eventos
+            $jsonData=[];
+            $idx =0;
+            foreach ($eventos as $evento){
+                $texto = $evento->getTextobotao();
+                $datatempo = new DateTime($evento->getEntrada());
+                $data = $datatempo->format('d/m/Y');
+                $hora = $datatempo->format('H:i:s');
+                $temp= ['Texto'=> $texto, 'Data' => $data, 'Hora' => $hora];
+                $jsonData[$idx++] = $temp;
+            }
+            $view = new JsonModel($jsonData);
             //$view->setTerminal(true);
         }
         else {
