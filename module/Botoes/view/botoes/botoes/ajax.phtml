@@ -23,7 +23,7 @@
                     var to_date = $('#to_date').val();  
                     if(from_date != '' && to_date != '')  
                     {
-                        alert('Filtro validado!');
+                        //alert('Filtro validado!');
                         $.ajax({
                             url:        '../botoes/ajax',
                             method:      'POST',
@@ -54,7 +54,7 @@
                     }  
                     else  
                     {  
-                        alert("Selecionar data");  
+                        alert("Selecionar datas");  
                     }  
                 });  
                 
@@ -76,7 +76,6 @@
         </div>  
         <div style="clear:both"></div>                 
         <br /> 
-        <a id="ajax">Carrega AJAX</a>
         <p id="p1">Texto porreiro</p>
         <table class="table table-bordered">
             <tbody id="evento">

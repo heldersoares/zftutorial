@@ -8,7 +8,6 @@
 
 namespace Botoes\Model;
 
-
 use InvalidArgumentException;
 use RunTimeException;
 use Botoes\Model\PedidoRepositoryInterface;
@@ -18,9 +17,6 @@ use Zend\Hydrator\HydratorInterface;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Db\Adapter\Driver\ResultInterface;
 use DateTime;
-
-
-
 
 /**
  * Description of PedidoRepository
@@ -47,17 +43,6 @@ class PedidoRepository implements PedidoRepositoryInterface {
         //$select->where->between('entrada','2018-04-10','2018-04-15'); //para testes
         $stmt = $sql->prepareStatementForSqlObject($select);
         $result = $stmt->execute();
-        
-        /* Para testes
-        if ($result instanceof ResultInterface && $result->isQueryResult()){
-            $resultSet = new ResultSet();
-            $resultSet->initialize($result);
-            //$emArray = $resultSet->toArray();
-            //echo $emArray[0]['textobotao'];
-            //var_export($resultSet);
-            //die();
-        }
-        */
         
         if (! $result instanceof ResultInterface || ! $result->isQueryResult()){
             return [];
@@ -88,14 +73,12 @@ class PedidoRepository implements PedidoRepositoryInterface {
         }
      
         return $pedido;
-        
     }
     
     public function findPedidoData($datainicio,$datafim) {
         
         //verificação se datainicio é menor que datafim é feito no script de entrada
-        
-        
+         
         $sql = new Sql($this->db);
         $select = $sql->select();
         $select->from('registo');

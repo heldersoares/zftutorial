@@ -24,28 +24,6 @@ return [
                     ],
                 ],
             ],
-            'application' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'    => '/application[/:action]',
-                    'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
-                    ],
-                ],
-            ],
-            //Adicionado download
-            'download' => [
-                'type'=> Segment::class,
-                'options' => [
-                    'route'=>'/download[/:action]',
-                    'defaults' => [
-                        'controller' => Controller\DownloadController::class,
-                        'action' => 'index',
-                        
-                    ]
-                ]
-            ]
         ],
     ],
     'controllers' => [
@@ -77,29 +55,27 @@ return [
                 'route' => 'home',
             ],
             [
-                'label' => 'Botões',
-                'route' => 'botoes',
-                
-                ],
-            ],
-            [
                 'label' => 'Album',
                 'route' => 'album',
                 'pages' => [
                     [
-                        'label' => 'Add',
-                        'route' => 'album',
-                        'action' => 'add',
+                        'label' => 'Inicio',
+                        'route' => 'album'
                     ],
                     [
-                        'label'  => 'Edit',
-                        'route'  => 'album',
-                        'action' => 'edit',
+                        'label'  => 'Adiciona',
+                        'route'  => '/add',
+                        
                     ],
                     [
-                        'label'  => 'Delete',
-                        'route'  => 'album',
-                        'action' => 'delete',
+                        'label'  => 'Editar',
+                        'route'  => 'album/edit',
+                        
+                    ],
+                    [
+                        'label'  => 'Apagar',
+                        'route'  => 'album/delete',
+                        
                     ],
                 ],
             ],
@@ -108,17 +84,46 @@ return [
                 'route' => 'blog',
                 'pages' => [
                     [
-                        'label' => 'Edita',
-                        'route' => 'detail',
-                        'action' => 'detail',
-
+                        'label' => 'Início',
+                        'route' => 'blog'
                     ],
+                    [
+                        'label'  => 'Adiciona',
+                        'route'  => 'blog/add',
+                        
+                    ],
+                    [
+                        'label'  => 'Editar',
+                        'route'  => 'blog/edit',
+                        
+                    ],
+                    [
+                        'label'  => 'Apagar',
+                        'route'  => 'blog/delete',
+                        
+                    ],
+                ],    
+            ],
+            [
+                'label' => 'Eventos',
+                'route' => 'botoes',
+                'pages' => [
+                    [
+                        'label' => 'Inicio',
+                        'route' => 'botoes',
+                    ],
+                    [
+                        'label'  => 'Filtrar',
+                        'route'  => 'botoes/ajax',
+                        'action' => 'ajax',
+                    ],
+                    
                 ],
-                
             ],
             [
                 'label' => 'Chinook',
                 'route' => 'chinook',
+                
             ],
         ],
     ],

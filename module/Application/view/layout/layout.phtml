@@ -14,14 +14,13 @@
             ->prependStylesheet($this->basePath('css/style.css'))
             ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
             ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
-       
-            
         ?>
         
         <?= $this->headScript()
             ->prependFile($this->basePath('js/bootstrap.min.js'))
             ->prependFile($this->basePath('js/jquery-3.3.1.js'))
         ?>
+ 
     </head>
     <body>
         <div class="container">
@@ -34,23 +33,19 @@
             
             <br />
             <div class="collapse navbar-collapse">
-                <?= $this->navigation('navigation')
+                <?= $this->navigation('Zend\Navigation\Default')
                     ->menu()
                     ->setMinDepth(0)
                     ->setMaxDepth(0)
                     ->setUlClass('nav navbar-nav')
                 ?>
             </div>
-            
             <div class="row">
-                <div class="col-md-12">
-                    <!-- placeholder de conteúdo --> 
-                    <?= $this->navigation('navigation')
-                        ->breadcrumbs()
-                        ->setMinDepth(0)
-                        ->setPartial('partial/breadcrumb') ?>
-                    <?= $this->content; ?>
-                </div>
+                <?= $this->navigation('navigation')
+                    ->breadcrumbs()
+                    ->setMinDepth(0)
+                    ->setPartial('partial/breadcrumb') ?>
+                <?= $this->content; ?>
             </div>
             <div class="row">
                 <div class="col-md-12">

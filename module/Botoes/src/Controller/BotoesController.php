@@ -10,7 +10,6 @@ use DateTime;
 
 class BotoesController extends AbstractActionController
 {
-   
     //Array com valores de teste; a boa prática será colocar estes dados num Model
     private $repositorio;
     
@@ -42,7 +41,6 @@ class BotoesController extends AbstractActionController
     public function ajaxAction() {
  
         //array de teste
-        
         $request= $this->getRequest();
         $query = $request->getQuery();
         if(isset($_POST["from_date"], $_POST["to_date"])){
@@ -51,15 +49,7 @@ class BotoesController extends AbstractActionController
             $eventos=$this->repositorio->findPedidoData($datainicial,$datafinal);
         };
         
-        
-        //Naõ colocar a próxima linha dentro do if
-        
-                       
         if ($request->isXmlHttpRequest() || $query->get('showJson')== 1){
-
-            //passar de objeto para array de eventos
-            
-            
             $jsonData=[];
             $idx =0;
             foreach ($eventos as $evento){
@@ -71,10 +61,9 @@ class BotoesController extends AbstractActionController
                 $jsonData[$idx++] = $temp;
             }
             $view = new JsonModel($jsonData);
-            //$view->setTerminal(true);
+            $view->setTerminal(true);
         }
         else {
-            
             $view= new ViewModel();
         }
         return $view;
